@@ -42,19 +42,35 @@ $vinyls = [
     ],
 ];
 
-$pdo = new PDO(DSN, USER, PASS);
-
-foreach ($vinyls as $vinyl){
+    $pdo = new PDO(DSN, USER, PASS);
     
-    var_dump($vinyl);
+    var_dump($pdo);
 
     $query = "INSERT INTO music (title, cover, artist, genre)
                 VALUES (:title, :cover, :artist, :genre);";
 
     $statement = $pdo->prepare($query);
-    $statement->bindValue(':title', $vinyl['title'], PDO::PARAM_STR);
-    $statement->bindValue(':cover', $vinyl['cover'], PDO::PARAM_STR);
-    $statement->bindValue(':artist', $vinyl['artist'], PDO::PARAM_STR);
-    $statement->bindValue(':genre', $vinyl['genre'], PDO::PARAM_STR);
+    $statement->bindValue(':title', $vinyls['title'], PDO::PARAM_STR);
+    $statement->bindValue(':cover', $vinyls['cover'], PDO::PARAM_STR);
+    $statement->bindValue(':artist', $vinyls['artist'], PDO::PARAM_STR);
+    $statement->bindValue(':genre', $vinyls['genre'], PDO::PARAM_STR);
     $statement->execute();
-}
+
+
+
+foreach ($vinyls as $vinyl){
+
+     $query1 = "INSERT INTO music (title, cover, artist, genre)
+      VALUES ('". $vinyl['title']."','". $vinyl['cover']."','". $vinyl['artist']."','". $vinyl['genre'];";
+
+//      $statement 
+
+
+/*<?php foreach ($vinyls as $vinyl) : 
+    
+    endforeach ?>*/
+
+
+addVinyl($vinyls);
+
+var_dump($vinyls);
