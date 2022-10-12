@@ -9,6 +9,7 @@
 </head>
 <body>
 
+
     <header>
         <h1>Ma collection de vinyl</h1>
         <p>Citation sur la musique</p>
