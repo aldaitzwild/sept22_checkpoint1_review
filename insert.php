@@ -3,7 +3,6 @@
 //Réaliser le code php qui permet, grace à PDO, d'intégrer le tableau ci-dessous en base
 // de données.
 
-require_once '_connec.php';
 
 $vinyls = [
     [
@@ -42,19 +41,13 @@ $vinyls = [
     ],
 ];
 
-$pdo = new PDO(DSN, USER, PASS);
+require_once 'function.php';
+
 
 foreach ($vinyls as $vinyl){
     
     var_dump($vinyl);
 
-    $query = "INSERT INTO music (title, cover, artist, genre)
-                VALUES (:title, :cover, :artist, :genre);";
+    addVinyl($vinyl);
 
-    $statement = $pdo->prepare($query);
-    $statement->bindValue(':title', $vinyl['title'], PDO::PARAM_STR);
-    $statement->bindValue(':cover', $vinyl['cover'], PDO::PARAM_STR);
-    $statement->bindValue(':artist', $vinyl['artist'], PDO::PARAM_STR);
-    $statement->bindValue(':genre', $vinyl['genre'], PDO::PARAM_STR);
-    $statement->execute();
 }
